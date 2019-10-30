@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="description" content="图说">
+<title>图说</title>
+
+<link rel="shortcut icon" href="https://tushuo.baidu.com/dt-ui/asset201901086/common/core/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://tushuo.baidu.com/dt-ui/asset201901086/common/core/img/favicon.ico" type="image/x-icon">
+<link rel="bookmark" href="https://tushuo.baidu.com/dt-ui/asset201901086/common/core/img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://tushuo.baidu.com/dt-ui/asset201901086/wave/app/waveApp.css" />
+    <link rel="stylesheet" href="https://tushuo.baidu.com/dt-ui/dep/jquery-ui/1.10.4/css/ui-darkness/jquery-ui-1.10.4.custom.css" />
+    <link rel="stylesheet" href="https://tushuo.baidu.com/dt-ui/dep/jpicker/1.1.6/asset/jPicker-1.1.6.css" />
+    <link rel="stylesheet" href="https://tushuo.baidu.com/dt-ui/dep/jquery-handsontable/0.10.5/asset/jquery.handsontable.dt.css" />
+    <link rel="stylesheet" href="https://tushuo.baidu.com/dt-ui/dep/codemirror/4.2/asset/lib/codemirror.css" />
+    <link rel="stylesheet" href="https://tushuo.baidu.com/dt-ui/dep/codemirror/4.2/asset/theme/ambiance.css" />
+    <!-- // <script src="https://requirejs.org/docs/release/2.1.11/comments/require.js"></script> -->
+    <!-- <script src="https://tushuo.baidu.com/dt-ui/dep/esl/1.8.2/esl.js"></script> -->
+    <script src="https://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-6/esl.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+                            var isAdmin = false;
+        
+        var echartsConfigPath = '../dep/echarts/2.1.9/asset/echarts';
+
+// Only be used in common/core/constant
+var TPL_DATA = window.TPL_DATA = {
+    debug: false,
+    uname: 'a***d',
+    uid: '2902986010',
+    serviceRoot: 'https:\/\/tushuo.baidu.com',
+    stubRoot: 'https:\/\/tushuo.baidu.com\/dt-ui',
+    stubPath: '\/api\/DTStub-xb.js',
+    uiRoot: 'https:\/\/tushuo.baidu.com\/dt-ui',
+    uiAsset: 'asset',
+    uiVersion: '201901086',
+    uiCodeRoot: 'https:\/\/tushuo.baidu.com\/dt-ui\/asset201901086',
+    uiTplRoot: 'https:\/\/tushuo.baidu.com\/dt-ui\/asset201901086',
+    staticRoot: 'https:\/\/tushuo.baidu.com\/static',
+    logoutUrl: 'https:\/\/tushuo.baidu.com\/certification\/logout',
+    zeroClipboardSwfPath: 'https:\/\/tushuo.baidu.com\/dt-ui/dep/zeroclipboard/2.1.1/asset/ZeroClipboard.swf',
+    jpickerImagePath: 'https:\/\/tushuo.baidu.com\/dt-ui/dep/jpicker/1.1.6/images/',
+    prodDepVersion: {"echarts":"2.1.9"},
+    themeInfo: {"defaultStyleId":"aatushuo","legacyStyleId":"0","ecThemePackageBase":"common\/core\/ecTheme","themeList":[{"styleId":"aatushuo","thumbnail":"https:\/\/tushuo.baidu.com\/dt-ui\/asset201901086\/prod\/theme\/aatushuo\/thumbnail.png"},{"styleId":"dark","thumbnail":"https:\/\/tushuo.baidu.com\/dt-ui\/asset201901086\/prod\/theme\/dark\/thumbnail.png"},{"styleId":"sakura","thumbnail":"https:\/\/tushuo.baidu.com\/dt-ui\/asset201901086\/prod\/theme\/sakura\/thumbnail.png","paperBgImg":"https:\/\/tushuo.baidu.com\/dt-ui\/asset201901086\/prod\/theme\/sakura\/paper-bg.png"},{"styleId":"gray","thumbnail":"https:\/\/tushuo.baidu.com\/dt-ui\/asset201901086\/prod\/theme\/gray\/thumbnail.png","paperBgImg":"https:\/\/tushuo.baidu.com\/dt-ui\/asset201901086\/prod\/theme\/gray\/paper-bg.jpg"},{"styleId":"helianthus","thumbnail":"https:\/\/tushuo.baidu.com\/dt-ui\/asset201901086\/prod\/theme\/helianthus\/thumbnail.png","paperBgImg":"https:\/\/tushuo.baidu.com\/dt-ui\/asset201901086\/prod\/theme\/helianthus\/paper-bg.jpg"},{"styleId":"0","thumbnail":"https:\/\/tushuo.baidu.com\/dt-ui\/asset201901086\/prod\/theme\/0\/thumbnail.png","paperBgImg":"https:\/\/tushuo.baidu.com\/dt-ui\/asset201901086\/prod\/theme\/0\/paper-bg.png"}]}};
+
+require.config({
+    baseUrl: TPL_DATA.uiCodeRoot,
+    paths: {
+        'tpl': 'tpl',
+        'css': 'css',
+        'jquery': '../dep/jquery/1.11.0/asset/jquery',
+        'est': '../dep/est/1.1.0/asset',
+        'etpl': '../dep/etpl/3.0.0/asset/main',
+        'json2': '../dep/json2/json2_amd',
+        'crossroads': '../dep/crossroads/0.12.0/dist/crossroads',
+        'signals': '../dep/js-signals/1.0.0/dist/signals',
+        'hasher': '../dep/hasher/1.2.0/dist/js/hasher',
+        'stacktrace': '../dep/stacktrace/0.6.0/asset/stacktrace',
+        'numeral': '../dep/numeral/1.4.7/asset/numeral',
+        'jqueryui': '../dep/jquery-ui/1.10.4/asset/jquery-ui-1.10.4.amd',
+        'jquerymousewheel': '../dep/jquery-mousewheel/3.1.11/jquery.mousewheel.min',
+        'jqueryfileuploaddir': '../dep/jquery-fileupload/9.7.0/asset',
+        'jpicker': '../dep/jpicker/1.1.6/asset/jpicker-1.1.6.amd',
+        'jqueryhandsontable': '../dep/jquery-handsontable/0.10.5.1/asset/jquery.handsontable.dt',
+        'zeroclipboard': '../dep/zeroclipboard/2.1.1/asset/ZeroClipboard',
+        'codemirrordir': '../dep/codemirror/4.2/asset',
+        'html2canvas': '../dep/html2canvas/0.4.1/asset/html2canvas',
+        'jquery.hotkeys': '../dep/jquery.hotkeys/asset/jquery.hotkeys',
+        'jquerypagination': '../dep/jquery-pagination/1.1.0/asset/jquery.twbsPagination.amd',
+        'tinycolor': '../dep/tinycolor/1.1.1/asset/tinycolor',
+        'echarts': echartsConfigPath,
+        'echarts/config': echartsConfigPath
+    }
+});
+
+        var ie = /msie (\d+\.\d+)/i.test(navigator.userAgent)
+            ? (document.documentMode || + RegExp['\x241']) : undefined;
+        if (ie < 9) {
+            var mark = document.createElement('div');
+            mark.style.cssText = 'position:absolute;z-index:10000;left:0;top:0;width:100%;text-align:center;'
+                                 + 'filter:alpha(opacity=90);background-color:#ccc;'
+                                 + 'height:' + document.documentElement.clientHeight + 'px;'
+                                 + 'padding-top:' + (document.documentElement.clientHeight / 2 - 100) + 'px';
+            mark.innerHTML = '<img src="/homepage/asset/img/no2ie678.jpg" />';
+            document.body.appendChild(mark);
+        }
+        else {
+            require(
+                ['wave/app/main'],
+                function (main) {
+                    main();
+                }
+            );
+        }
+	</script>
+
+    <script type="text/javascript">
+        with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+
+    <script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?65632e2f0cea0f5ca6ce9ec7feb4fb03";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+</html>
+
