@@ -22,3 +22,5 @@ Syntax highlighted code block
 2. List
 ```
 
+[Link](bi.html)
+
